@@ -8,7 +8,17 @@ const wordsArray = [
   "master",
   "branch",
   "mainly",
-  "diyar",
+  "apple",
+  "brain",
+  "earth",
+  "beach",
+  "radio",
+  "active",
+  "pizza",
+  "shoes",
+  "ghost",
+  "fruit",
+  "juice",
   "school",
 ];
 let randomWords = wordsArray[Math.floor(Math.random() * wordsArray.length)];
