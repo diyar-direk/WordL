@@ -89,7 +89,7 @@ checkButton.onclick = () => {
     console.log("you wine");
     checkButton.classList.add("disabled");
     hintsButton.classList.add("disabled");
-    successFun("good game you wine", "gren");
+    statusFunction("good game you wine", "gren");
   } else {
     if (currentry < trys) {
       currentDiv.classList.add("disabled");
@@ -106,7 +106,7 @@ checkButton.onclick = () => {
   if (lastInput == currentDiv) {
     checkButton.classList.add("disabled");
     hintsButton.classList.add("disabled");
-    successFun(`game over the word is ${randomWords}`, "red");
+    statusFunction(`game over the word is ${randomWords}`, "red");
   }
 };
 
@@ -127,7 +127,7 @@ hintsButton.onclick = () => {
   }
 };
 
-document.onkeyup = (e) => {
+function handleKeyUp(e) {
   if (e.key == "Backspace") {
     const inputs = document.querySelectorAll(`.try${currentry} input`);
     let chosenIndex = e.target.dataset.index;
@@ -144,9 +144,12 @@ document.onkeyup = (e) => {
   if (e.key == "Tab") {
     e.preventDefault();
   }
-};
+}
 
-function successFun(h1Text, buttonClass) {
+document.addEventListener("keyup", handleKeyUp);
+
+function statusFunction(h1Text, buttonClass) {
+  document.removeEventListener("keyup", handleKeyUp);
   let overlay = document.createElement("div");
   overlay.className = "overlay";
   let h1 = document.createElement("h1");
